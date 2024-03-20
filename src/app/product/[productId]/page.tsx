@@ -5,6 +5,7 @@ import ProductOptions from './options/ProductOptions'
 import ProductDetails from './details/ProductDetails'
 import Brands from './brands/Brands'
 import { Box } from '@mui/material'
+import BestSellers from './best-sellers/BestSellers'
 
 const ProuctDetails = () => {
     return (
@@ -12,6 +13,7 @@ const ProuctDetails = () => {
             <Header />
             <ProductOptions />
             <ProductDetails />
+            <BestSellers />
             <Brands />
             <Footer />
         </Box>

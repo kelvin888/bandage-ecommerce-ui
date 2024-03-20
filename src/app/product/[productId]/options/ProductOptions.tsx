@@ -92,7 +92,7 @@ const ProductOptions = () => {
 
 
                             <Box>
-                                <Divider color='grey.600' sx={{ marginTop: 10, width: "80%" }} />
+                                <Divider color='grey.600' sx={{ marginTop: 10 }} />
 
                                 <Box marginTop={2}>
                                     <ColorChooser colors={colors} onColorClick={handleColorClick} />
