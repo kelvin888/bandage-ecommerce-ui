@@ -6,12 +6,13 @@ import CartIcon from "@/assets/images/icons/cart.svg"
 import HeartIcon from "@/assets/images/icons/heart.svg"
 import SearchIcon from "@/assets/images/icons/search.svg"
 import Image from 'next/image'
+import Logo from '../logo/Logo'
 
 const Navbar = () => {
     return (
         <Box height={80}>
             <Container sx={{ display: "flex", alignItems: "center", height: "100%", justifyContent: "space-between" }}>
-                <Typography fontWeight={700} fontSize={24}>Bandage</Typography>
+                <Logo />
 
                 <Menu />
 
