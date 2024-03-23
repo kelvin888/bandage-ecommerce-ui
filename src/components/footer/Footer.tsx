@@ -26,7 +26,7 @@ const Footer = () => {
 
             <Box bgcolor="common.white">
                 <Container>
-                    <Box display="flex" gap={6} justifyContent="space-between" py={8}>
+                    <Box display="flex" flexWrap="wrap" gap={6} justifyContent="space-between" py={8}>
                         <Box minWidth="fit-content">
                             <Typography fontSize={16} fontWeight={700} mb={3}>Company Info</Typography>
                             <Stack gap={2}>

@@ -2,7 +2,7 @@ import ProductCard from '@/components/product-card/ProductCard';
 import { Box, Container, Divider, Grid, Typography } from '@mui/material'
 import React from 'react'
 
-const sampleProducts = [
+export const sampleProducts = [
     {
         imageUrl: 'https://via.placeholder.com/300',
         productName: 'Product 1',

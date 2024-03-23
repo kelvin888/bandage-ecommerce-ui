@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import Box from '@mui/material/Box';
-import { Container } from '@mui/material';
+import { Container, Hidden } from '@mui/material';
 import PhoneIcon from "@/assets/images/icons/phone.svg"
 import MailIcon from "@/assets/images/icons/mail.svg"
 import InstagramIcon from "@/assets/images/icons/instagram.svg"
@@ -15,42 +15,47 @@ const Header = () => {
 
     return (
         <Box>
-            <Box sx={{
-                bgcolor: "secondary.main",
-                color: "common.white",
-                height: 58,
-            }}>
-                <Container sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    height: "100%",
-                    justifyContent: "space-between"
+            <Hidden mdDown>
+                <Box sx={{
+                    bgcolor: "secondary.main",
+                    color: "common.white",
+                    height: 58,
                 }}>
+                    <Container sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        height: "100%",
+                        justifyContent: "space-between"
+                    }}>
 
-                    <Box display="flex" gap={4}>
-                        <Box display="flex" alignItems="center" gap={1}>
-                            <Image src={PhoneIcon} alt="phone icon" />
-                            (225) 555-0118
+                        <Box display="flex" gap={4}>
+                            <Box display="flex" alignItems="center" gap={1}>
+                                <Image src={PhoneIcon} alt="phone icon" />
+                                (225) 555-0118
+                            </Box>
+                            <Box display="flex" alignItems="center" gap={1}>
+                                <Image src={MailIcon} alt="mail icon" />
+
+                                michelle.rivera@example.com</Box>
                         </Box>
-                        <Box display="flex" alignItems="center" gap={1}>
-                            <Image src={MailIcon} alt="mail icon" />
+                        <Hidden lgDown>
+                            <Box fontWeight={700}>
+                                Follow Us  and get a chance to win 80% off
+                            </Box>
+                        </Hidden>
 
-                            michelle.rivera@example.com</Box>
-                    </Box>
-                    <Box fontWeight={700}>
-                        Follow Us  and get a chance to win 80% off
-                    </Box>
 
-                    <Box display="flex" gap={2} fontWeight={700}>Follow Us  :
-                        <Box display="flex" alignItems="center" gap={1}>
-                            <Image src={InstagramIcon} alt='instagram icon' />
-                            <Image src={YoutubeIcon} alt='youtube icon' />
-                            <Image src={FacebookIcon} alt='facebook icon' />
-                            <Image src={TwitterIcon} alt='twitter icon' />
+                        <Box display="flex" gap={2} fontWeight={700}>Follow Us  :
+                            <Box display="flex" alignItems="center" gap={1}>
+                                <Image src={InstagramIcon} alt='instagram icon' />
+                                <Image src={YoutubeIcon} alt='youtube icon' />
+                                <Image src={FacebookIcon} alt='facebook icon' />
+                                <Image src={TwitterIcon} alt='twitter icon' />
+                            </Box>
                         </Box>
-                    </Box>
-                </Container>
-            </Box>
+                    </Container>
+                </Box>
+            </Hidden>
 
             <Navbar />
         </Box>

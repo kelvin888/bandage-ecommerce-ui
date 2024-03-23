@@ -1,4 +1,4 @@
-import { Box, Container, List, ListItem, ListItemText, Typography } from '@mui/material'
+import { Box, Container, Hidden, List, ListItem, ListItemText, Typography } from '@mui/material'
 import React from 'react'
 import Menu from './menu/Menu'
 import PersonIcon from "@/assets/images/icons/person.svg"
@@ -14,13 +14,18 @@ const Navbar = () => {
             <Container sx={{ display: "flex", alignItems: "center", height: "100%", justifyContent: "space-between" }}>
                 <Logo />
 
-                <Menu />
+                <Hidden mdDown>
+                    <Menu />
+                </Hidden>
 
                 <Box display="flex" gap={2} color="primary.main">
-                    <Box display="flex" alignItems="center" gap={1}>
-                        <Image src={PersonIcon} alt="person icon" />
-                        <Typography color="primary.main" fontWeight={700}>Login / Register</Typography>
-                    </Box>
+                    <Hidden mdDown>
+                        <Box display="flex" alignItems="center" gap={1}>
+                            <Image src={PersonIcon} alt="person icon" />
+                            <Typography color="primary.main" fontWeight={700}>Login / Register</Typography>
+                        </Box>
+                    </Hidden>
+
 
                     <Box>
                         <Image src={SearchIcon} alt="search icon" />

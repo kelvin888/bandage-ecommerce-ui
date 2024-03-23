@@ -5,7 +5,7 @@ import { createTheme } from '@mui/material/styles';
 
 
 const montserrat = Montserrat({
-    weight: ['300', '400', '500', '700'],
+    weight: ['300', '400', '500', "600", '700', "800", '900'],
     subsets: ['latin'],
     display: 'swap',
   });
@@ -32,10 +32,16 @@ const theme = createTheme({
             "500": "#FAFAFA", 
             "600":"#BDBDBD",
             "700": "#737373",
+        },
+        error: {
+         main : "#E74040"
         }
       },
   typography: {
     fontFamily: montserrat.style.fontFamily,
+    body1: {
+      color: '#252B42', 
+    },
   },
   components: {
     MuiAlert: {
