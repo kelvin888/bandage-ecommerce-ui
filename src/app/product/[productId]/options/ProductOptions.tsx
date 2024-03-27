@@ -51,7 +51,7 @@ const ProductOptions = () => {
                     </Breadcrumbs>
                 </Box>
 
-                <Stack direction="row" gap={8}>
+                <Stack direction="row" gap={8} flexWrap="wrap">
                     <Box flex="1">
                         <ImageGallery images={productImages} />
                     </Box>

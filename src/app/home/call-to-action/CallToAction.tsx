@@ -18,7 +18,7 @@ const CallToAction = () => {
             alignItems: "center",
             backgroundPosition: isLargeScreen ? "unset" : "bottom"
         }}>
-            <Stack direction="column" alignItems="center" gap={3} maxWidth={571}>
+            <Stack direction="column" alignItems="center" gap={3} maxWidth={571} px={2}>
                 <Typography color="primary.main" fontSize={14} fontWeight={700}>Designing Better Experience</Typography>
                 <Typography fontSize={40} fontWeight={700} textAlign="center">Problems trying to resolve
                     the conflict between </Typography>

@@ -1,6 +1,6 @@
 import { sampleProducts } from '@/app/product/[productId]/best-sellers/BestSellers'
 import ProductCard from '@/components/product-card/ProductCard'
-import { Box, Button, Container, Grid, Stack, Typography } from '@mui/material'
+import { Box, Button, Container, Grid, Paper, Stack, Typography } from '@mui/material'
 import React from 'react'
 
 const FeaturedProducts = () => {
@@ -13,9 +13,9 @@ const FeaturedProducts = () => {
                     <Typography fontSize={14} color="grey.700" letterSpacing={2}>Problems trying to resolve the conflict between </Typography>
                 </Stack>
 
-                <Grid container spacing={4} columns={15}>
+                <Grid container spacing={4} columns={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 15 }}>
                     {sampleProducts.map((product, index) =>
-                        <Grid key={`product ${index}`} item xs={24} sm={5} md={3}>
+                        <Grid key={`product ${index}`} item xl={3} lg={3} md={4} sm={6} xs={12}>
                             <ProductCard
                                 actualPrice={product.actualPrice}
                                 description={product.description}

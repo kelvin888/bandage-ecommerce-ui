@@ -24,13 +24,14 @@ const ImageGallery: React.FC<Props> = ({ images }) => {
 
     return (
         <ImageGalleryContainer>
-            <ImageContainer>
+            <ImageContainer sx={{ width: "100%" }}>
                 <Image
                     src={images[currentImageIndex]}
                     alt={`Image ${currentImageIndex + 1}`}
                     width={506}
                     height={450}
                     style={{ objectFit: "cover" }}
+                    layout='responsive'
                 />
                 <PreviousButton
                     onClick={handlePrev}

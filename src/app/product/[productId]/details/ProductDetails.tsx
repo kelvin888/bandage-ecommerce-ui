@@ -3,12 +3,15 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
-import { Container, Stack, Typography } from '@mui/material';
+import { Breakpoint, Container, Stack, Typography } from '@mui/material';
 import ProductImage from "@/assets/images/product-details.png"
 import Image from 'next/image';
+import useBreakpoints from '@/hooks/useBreakPoints';
 
 
 const ProductDetails = () => {
+
+    const isLargeScreen = useBreakpoints('md' as Breakpoint);
 
     const [value, setValue] = React.useState('1');
 
@@ -29,8 +32,8 @@ const ProductDetails = () => {
                             </TabList>
                         </Box>
                         <TabPanel value="1" sx={{ px: 0 }}>
-                            <Box display="flex">
-                                <Box flex={1}>
+                            <Box display="flex" gap={2} flexWrap="wrap">
+                                <Box flex={isLargeScreen ? 1 : "100%"}>
                                     <Stack gap={3} maxWidth={513}>
                                         <Typography component="h5" fontSize={24} fontWeight={700}>
                                             the quick fox jumps over
@@ -56,8 +59,8 @@ const ProductDetails = () => {
                         </TabPanel>
                     </TabContext>
                 </Box>
-            </Container>
-        </Box>
+            </Container >
+        </Box >
     )
 }
 
