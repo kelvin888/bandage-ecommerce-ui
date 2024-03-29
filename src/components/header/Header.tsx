@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import Box from '@mui/material/Box';
-import { Container, Hidden } from '@mui/material';
+import { Breakpoint, Container, Hidden } from '@mui/material';
 import PhoneIcon from "@/assets/images/icons/phone.svg"
 import MailIcon from "@/assets/images/icons/mail.svg"
 import InstagramIcon from "@/assets/images/icons/instagram.svg"
@@ -10,8 +10,11 @@ import FacebookIcon from "@/assets/images/icons/facebook.svg"
 import TwitterIcon from "@/assets/images/icons/twitter.svg"
 import Image from 'next/image';
 import Navbar from './Navbar';
+import useBreakpoints from '@/hooks/useBreakPoints';
+import MobileNavbar from './menu/MobileNavbar';
 
 const Header = () => {
+    const isLargeScreen = useBreakpoints("md" as Breakpoint)
 
     return (
         <Box>
@@ -57,7 +60,11 @@ const Header = () => {
                 </Box>
             </Hidden>
 
-            <Navbar />
+            {isLargeScreen ?
+                <Navbar />
+                :
+                <MobileNavbar />
+            }
         </Box>
 
     )

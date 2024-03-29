@@ -1,14 +1,14 @@
 import { ListItem, ListItemText } from '@mui/material'
 import React, { FC } from 'react'
-type MenuItemProps = {
+type CustomMenuItemProps = {
     label: string
 }
-const MenuItem: FC<MenuItemProps> = ({ label }) => {
+const CustomMenuItem: FC<CustomMenuItemProps> = ({ label }) => {
     return (
         <ListItem>
-            <ListItemText disableTypography sx={{ fontWeight: 700 }} primary={label} />
+            <ListItemText disableTypography sx={{ fontWeight: 700, textAlign: "center" }} primary={label} />
         </ListItem>
     )
 }
 
-export default MenuItem
+export default CustomMenuItem

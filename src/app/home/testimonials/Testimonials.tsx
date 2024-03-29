@@ -3,6 +3,15 @@ import { Avatar, Box, Breakpoint, Container, Grid, ImageList, ImageListItem, Rat
 import React from 'react'
 import Image from "next/image";
 import User1 from "@/assets/images/testimonial/user1.png"
+import User2 from "@/assets/images/testimonial/user2.png"
+import User3 from "@/assets/images/testimonial/user3.png"
+import User4 from "@/assets/images/testimonial/user4.png"
+import User5 from "@/assets/images/testimonial/user5.png"
+import User6 from "@/assets/images/testimonial/user6.png"
+import User7 from "@/assets/images/testimonial/user7.png"
+import User8 from "@/assets/images/testimonial/user8.png"
+import User9 from "@/assets/images/testimonial/user9.png"
+import User10 from "@/assets/images/testimonial/user10.png"
 import useBreakpoints from '@/hooks/useBreakPoints';
 
 const Testimonials = () => {
@@ -28,31 +37,31 @@ const Testimonials = () => {
                 <Box flex={1}>
                     <ImageList cols={3} rowHeight={142}>
                         <ImageListItem>
-                            <Image src='https://via.placeholder.com/300' fill alt="testimonial image1" />
+                            <Image src={User2} fill alt="testimonial image1" />
                         </ImageListItem>
                         <ImageListItem>
-                            <Image src='https://via.placeholder.com/300' fill alt="testimonial image1" />
+                            <Image src={User3} fill alt="testimonial image1" />
                         </ImageListItem>
                         <ImageListItem>
-                            <Image src='https://via.placeholder.com/300' fill alt="testimonial image1" />
+                            <Image src={User4} fill alt="testimonial image1" />
                         </ImageListItem>
                         <ImageListItem>
-                            <Image src='https://via.placeholder.com/300' fill alt="testimonial image1" />
+                            <Image src={User5} fill alt="testimonial image1" />
                         </ImageListItem>
                         <ImageListItem>
-                            <Image src='https://via.placeholder.com/300' fill alt="testimonial image1" />
+                            <Image src={User6} fill alt="testimonial image1" />
                         </ImageListItem>
                         <ImageListItem>
-                            <Image src='https://via.placeholder.com/300' fill alt="testimonial image1" />
+                            <Image src={User7} fill alt="testimonial image1" />
                         </ImageListItem>
                         <ImageListItem>
-                            <Image src='https://via.placeholder.com/300' fill alt="testimonial image1" />
+                            <Image src={User8} fill alt="testimonial image1" />
                         </ImageListItem>
                         <ImageListItem>
-                            <Image src='https://via.placeholder.com/300' fill alt="testimonial image1" />
+                            <Image src={User9} fill alt="testimonial image1" />
                         </ImageListItem>
                         <ImageListItem>
-                            <Image src='https://via.placeholder.com/300' fill alt="testimonial image1" />
+                            <Image src={User10} fill alt="testimonial image1" />
                         </ImageListItem>
                     </ImageList>
                 </Box>

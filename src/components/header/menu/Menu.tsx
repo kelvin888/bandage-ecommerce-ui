@@ -1,16 +1,16 @@
-import { List, ListItem, ListItemText } from '@mui/material'
+import { List } from '@mui/material'
 import React from 'react'
-import MenuItem from './MenuItem'
+import CustomMenuItem from './MenuItem'
 
 const Menu = () => {
     return (
         <List sx={{ display: "flex", color: "grey.700", fontWeight: 700 }}>
-            <MenuItem label='Home' />
-            <MenuItem label='Shop' />
-            <MenuItem label='About' />
-            <MenuItem label='Blog' />
-            <MenuItem label='Contact' />
-            <MenuItem label='Pages' />
+            <CustomMenuItem label='Home' />
+            <CustomMenuItem label='Shop' />
+            <CustomMenuItem label='About' />
+            <CustomMenuItem label='Blog' />
+            <CustomMenuItem label='Contact' />
+            <CustomMenuItem label='Pages' />
         </List>
     )
 }
