@@ -11,6 +11,7 @@ import useBreakpoints from '@/hooks/useBreakPoints';
 
 const ProductDetails = () => {
 
+
     const isLargeScreen = useBreakpoints('md' as Breakpoint);
 
     const [value, setValue] = React.useState('1');
@@ -19,13 +20,14 @@ const ProductDetails = () => {
         setValue(newValue);
     };
 
+
     return (
         <Box>
             <Container>
                 <Box sx={{ width: '100%', typography: 'body1' }}>
                     <TabContext value={value}>
                         <Box sx={{ borderBottom: 1, borderColor: 'divider', height: 80, display: 'flex', flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-                            <TabList onChange={handleChange} aria-label="lab API tabs example">
+                            <TabList onChange={handleChange} aria-label="product-details">
                                 <Tab sx={{ py: 4, textTransform: "capitalize" }} label="Description" value="1" />
                                 <Tab sx={{ py: 4, textTransform: "capitalize" }} label="Additional Information" value="2" />
                                 <Tab sx={{ py: 4, textTransform: "capitalize" }} label="Reviews (0)" value="3" />

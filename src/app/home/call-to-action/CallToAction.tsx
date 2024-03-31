@@ -10,7 +10,8 @@ const CallToAction = () => {
     return (
         <Box sx={{
             backgroundImage: `url(${calltoActionBg.src})`,
-            objectFit: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
             height: 640,
             display: "flex",
             flexDirection: "column",

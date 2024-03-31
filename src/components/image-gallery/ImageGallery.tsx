@@ -4,10 +4,10 @@ import { ImageGalleryContainer, ImageContainer, ThumbnailContainer, ThumbnailIma
 import Image from 'next/image';
 
 interface Props {
-    images: string[];
+    images: string[] | undefined;
 }
 
-const ImageGallery: React.FC<Props> = ({ images }) => {
+const ImageGallery: React.FC<Props> = ({ images = [] }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 
     const handleNext = () => {

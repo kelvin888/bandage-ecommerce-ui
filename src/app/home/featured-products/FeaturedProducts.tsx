@@ -1,40 +1,19 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Box, Button, CircularProgress, Container, Grid, Stack, Typography } from '@mui/material';
-import { useQuery } from '@tanstack/react-query';
 import ProductCard from '@/components/product-card/ProductCard';
-import { productKeys } from '@/constants/queryKeys';
-import productService from '@/services/productService';
-import { Product } from '@/types/product';
+import { useRouter } from 'next/navigation';
+import useProduct from '@/hooks/useProduct';
+
 const FeaturedProducts = () => {
-    const [products, setProducts] = useState<Product[]>([])
-    const defaultLimit = 30;
-    const [limit, setLimit] = useState(defaultLimit);
-    const [skip, setSkip] = useState(0);
-
-    const { data: fetchedProducts, isLoading, isFetching } = useQuery({
-        queryKey: [productKeys.FIND_ALL_PRODUCTS, { limit, skip }],
-        queryFn: () => productService.getProducts({ limit, skip }),
-        enabled: true,
-    });
-
-    useEffect(() => {
-        if (fetchedProducts) {
-            setProducts(prevProducts => [
-                ...prevProducts,
-                ...fetchedProducts.data.products
-            ]);
-        }
-    }, [fetchedProducts])
+    const router = useRouter()
+    const { products, handleLoadMore, isFetching, isLoading } = useProduct(30)
 
 
-
-    const handleLoadMore = () => {
-        setLimit(defaultLimit)
-        setSkip(skip + defaultLimit)
-    };
-
-    console.log("products", products)
+    const handleCardClick = (productId: number) => {
+        console.log("card clicked", productId)
+        router.push("/product/" + productId)
+    }
 
     return (
         <Box py={8}>
@@ -49,11 +28,13 @@ const FeaturedProducts = () => {
                     {products.map((product, index) =>
                         <Grid key={`product ${index}`} item xl={3} lg={3} md={4} sm={6} xs={12}>
                             <ProductCard
+                                productId={product.id}
                                 actualPrice={product.price}
                                 description={product.description}
                                 discountedPrice={product.discountPercentage}
                                 imageUrl={product.thumbnail}
                                 productName={product.title}
+                                onCardClick={handleCardClick}
                             />
                         </Grid>
                     )}

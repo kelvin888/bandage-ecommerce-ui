@@ -12,10 +12,15 @@ export type Product = {
         images: string[]
 }
 
-export type ProductResponse = {
+export type AllProductResponse = {
         data:{
             products: Product[]
         }
+    }
+
+    export type SingleProductResponse = {
+        data: Product
+        
     }
 
     export type PaginationParams = {

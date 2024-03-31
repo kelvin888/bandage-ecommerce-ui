@@ -1,25 +1,34 @@
+"use client"
 import React from 'react';
 import { Card, CardContent, Typography, CardMedia, Box } from '@mui/material';
 
 interface ProductProps {
+    productId: number
     imageUrl: string;
     productName: string;
     description: string;
     actualPrice: number;
     discountedPrice: number;
     currency?: string
+    onCardClick?: (productId: number) => void
 }
 
 const ProductCard: React.FC<ProductProps> = ({
+    productId,
     imageUrl,
     productName,
     description,
     actualPrice,
     discountedPrice,
-    currency = "$"
+    currency = "$",
+    onCardClick,
 }) => {
+
+    const handleCardClick = () => {
+        onCardClick && onCardClick(productId)
+    }
     return (
-        <Card elevation={0}>
+        <Card elevation={0} onClick={handleCardClick}>
             <CardMedia
                 component="img"
                 height="280"

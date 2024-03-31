@@ -9,6 +9,10 @@ import ColorChooser from '@/components/color-chooser/ColorChooser';
 import { StyledIconButton } from '@/components/styled-icon-button/StyledIconButton';
 import { AddShoppingCartOutlined, FavoriteBorderOutlined, VisibilityOutlined } from '@mui/icons-material';
 import theme from '@/theme/theme';
+import { useQuery } from '@tanstack/react-query';
+import { productKeys } from '@/constants/queryKeys';
+import productService from '@/services/productService';
+import { useParams } from 'next/navigation';
 
 const productImages = [
     'https://cdn.dummyjson.com/product-images/1/1.jpg',
@@ -28,17 +32,28 @@ const breadcrumbs = [
         underline="hover"
         key="2"
         color="inherit"
-        href="/material-ui/getting-started/installation/"
     >
         Shop
     </Link>
 ];
 
 const ProductOptions = () => {
+    const params = useParams<{ productId: string; }>()
+
+    const { data: product } = useQuery({
+        queryKey: [productKeys.FIND_PRODUCT_BY_ID],
+        queryFn: async () => {
+            const response = await productService.getProductById(Number(params.productId));
+            return response.data;
+        }
+    })
+
     const handleColorClick = (color: string) => {
         console.log('Selected color:', color);
         // Add logic to handle selected color
     };
+
+    console.log("resp", product)
     return (
         <Box bgcolor="grey.500">
             <Container>
@@ -53,19 +68,19 @@ const ProductOptions = () => {
 
                 <Stack direction="row" gap={8} flexWrap="wrap">
                     <Box flex="1">
-                        <ImageGallery images={productImages} />
+                        <ImageGallery images={product?.images} />
                     </Box>
                     <Box flex="1">
                         <Box maxHeight={450} height="100%" display="flex" flexDirection="column" justifyContent="space-between">
                             <Box>
                                 <Typography marginBottom={1} variant='h4' fontSize={20}>
-                                    Floating Phone
+                                    {product?.title}
                                 </Typography>
 
                                 <Box display="flex" alignItems="center" marginTop={2} gap={3}>
                                     <Rating
                                         name="rating"
-                                        value={1.5}
+                                        value={product?.rating}
                                         precision={0.5}
                                         readOnly
                                     />
@@ -78,7 +93,7 @@ const ProductOptions = () => {
                                 <Box marginTop={3}>
                                     <Box>
                                         <Typography color="common.black" fontWeight={700} fontSize={24}>
-                                            $1,139.33
+                                            {product?.price}
                                         </Typography>
                                     </Box>
 
