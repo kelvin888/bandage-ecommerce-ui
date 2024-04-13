@@ -2,10 +2,18 @@
 import ProductCard from '@/components/product-card/ProductCard';
 import useProduct from '@/hooks/useProduct';
 import { Box, Container, Divider, Grid, Typography } from '@mui/material'
+import { useRouter } from 'next/navigation';
 import React from 'react'
 
 const BestSellers = () => {
+    const router = useRouter()
     const { products } = useProduct(8)
+
+    const handleCardClick = (productId: number) => {
+        console.log("card clicked", productId)
+        router.push("/product/" + productId)
+    }
+
     return (
         <Box bgcolor="grey.500" py={6}>
             <Container>
@@ -24,6 +32,7 @@ const BestSellers = () => {
                                     discountedPrice={product.discountPercentage}
                                     imageUrl={product.thumbnail}
                                     productName={product.title}
+                                    onCardClick={handleCardClick}
                                 />
                             </Grid>
                         )}

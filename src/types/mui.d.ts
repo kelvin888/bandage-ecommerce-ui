@@ -6,5 +6,8 @@ declare module '@mui/material/styles' {
     orange?: {
         main: string
     };
+    error?: {
+      main: string
+    }
   }
 }

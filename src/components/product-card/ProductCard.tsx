@@ -1,6 +1,8 @@
 "use client"
 import React from 'react';
 import { Card, CardContent, Typography, CardMedia, Box } from '@mui/material';
+import { clipText } from '@/utils/clipText';
+
 
 interface ProductProps {
     productId: number
@@ -37,8 +39,8 @@ const ProductCard: React.FC<ProductProps> = ({
             />
             <CardContent sx={{ padding: 2 }}>
                 <Box bgcolor="white" marginBottom={1}>
-                    <Typography variant="h5" fontWeight={700} fontSize={16}>{productName}</Typography>
-                    <Typography variant="body1" color="grey.700" marginTop={2} fontSize={14} fontWeight={700}>{description}</Typography>
+                    <Typography variant="h5" fontWeight={700} fontSize={16} textOverflow="ellipsis" >{clipText(productName, 20)}</Typography>
+                    <Typography variant="body1" color="grey.700" marginTop={2} fontSize={14} fontWeight={700}>{clipText(description, 60)}</Typography>
                 </Box>
                 <Box display="flex" gap={2} bgcolor="white">
                     <Typography variant="body1" color="grey.600" fontWeight={700} fontSize={16}>

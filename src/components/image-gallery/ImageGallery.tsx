@@ -30,8 +30,7 @@ const ImageGallery: React.FC<Props> = ({ images = [] }) => {
                     alt={`Image ${currentImageIndex + 1}`}
                     width={506}
                     height={450}
-                    style={{ objectFit: "cover" }}
-                    layout='responsive'
+                    style={{ objectFit: "contain" }}
                 />
                 <PreviousButton
                     onClick={handlePrev}

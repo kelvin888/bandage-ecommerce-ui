@@ -1,7 +1,7 @@
 "use client"
 import ImageGallery from '@/components/image-gallery/ImageGallery'
-import { Box, Breadcrumbs, Button, Container, Link, Stack, Typography } from '@mui/material'
-import React from 'react'
+import { Alert, Box, Breadcrumbs, Button, Container, Link, Snackbar, Stack, Typography } from '@mui/material'
+import React, { useState } from 'react'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import Rating from '@mui/material/Rating';
 import Divider from '@mui/material/Divider';
@@ -13,13 +13,8 @@ import { useQuery } from '@tanstack/react-query';
 import { productKeys } from '@/constants/queryKeys';
 import productService from '@/services/productService';
 import { useParams } from 'next/navigation';
-
-const productImages = [
-    'https://cdn.dummyjson.com/product-images/1/1.jpg',
-    'https://cdn.dummyjson.com/product-images/1/2.jpg',
-    'https://cdn.dummyjson.com/product-images/1/3.jpg',
-    'https://cdn.dummyjson.com/product-images/1/4.jpg',
-]
+import { useDispatch } from 'react-redux';
+import { addItem } from '@/features/cart/cartSlice';
 
 const colors = ['#FF5733', '#23856D', '#E77C40', '#60a5fa']; // Example colors
 
@@ -38,6 +33,9 @@ const breadcrumbs = [
 ];
 
 const ProductOptions = () => {
+    const [addToCartSuccess, setAddToCartSuccess] = useState(false)
+    const dispatch = useDispatch();
+
     const params = useParams<{ productId: string; }>()
 
     const { data: product } = useQuery({
@@ -50,8 +48,18 @@ const ProductOptions = () => {
 
     const handleColorClick = (color: string) => {
         console.log('Selected color:', color);
-        // Add logic to handle selected color
     };
+
+    const handleAddToCart = () => {
+        if (product) {
+            dispatch(addItem(product))
+        }
+        setAddToCartSuccess(true)
+    }
+
+    const handleClose = () => {
+        setAddToCartSuccess(false)
+    }
 
     console.log("resp", product)
     return (
@@ -120,7 +128,7 @@ const ProductOptions = () => {
                                 <StyledIconButton>
                                     <FavoriteBorderOutlined fontSize='small' />
                                 </StyledIconButton>
-                                <StyledIconButton>
+                                <StyledIconButton onClick={handleAddToCart}>
                                     <AddShoppingCartOutlined fontSize='small' />
                                 </StyledIconButton>
                                 <StyledIconButton>
@@ -130,6 +138,18 @@ const ProductOptions = () => {
                         </Box>
                     </Box>
                 </Stack>
+
+
+                <Snackbar open={addToCartSuccess} autoHideDuration={6000} onClose={handleClose}>
+                    <Alert
+                        onClose={handleClose}
+                        severity="success"
+                        variant="filled"
+                        sx={{ width: '100%' }}
+                    >
+                        This is a success Alert inside a Snackbar!
+                    </Alert>
+                </Snackbar>
 
             </Container>
         </Box>

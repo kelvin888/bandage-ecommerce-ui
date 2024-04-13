@@ -5,6 +5,8 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "@/api/client";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import theme from "@/theme/theme";
+import { Provider as ReduxProvider } from "react-redux";
+import { store } from "@/store/store";
 
 function Providers({ children }: React.PropsWithChildren): React.JSX.Element {
 
@@ -12,7 +14,9 @@ function Providers({ children }: React.PropsWithChildren): React.JSX.Element {
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <QueryClientProvider client={queryClient}>
-                {children}
+                <ReduxProvider store={store}>
+                    {children}
+                </ReduxProvider>
             </QueryClientProvider >
         </ThemeProvider>
     );

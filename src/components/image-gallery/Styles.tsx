@@ -26,6 +26,7 @@ export const ThumbnailImage = styled(Image)(({ theme }) => ({
     '&:hover': {
         transform: 'scale(1.1)',
     },
+    objectFit: "contain"
 }));
 
 export const PreviousButton = styled(NavigateBefore)(({ theme }) => ({

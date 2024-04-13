@@ -8,7 +8,7 @@ import { useQuery } from '@tanstack/react-query';
 
 const useProduct = (limit: number) => {
   const [products, setProducts] = useState<Product[]>([]);
-  const defaultLimit = limit || 30; // Use provided limit or default to 30
+  const defaultLimit = limit || 30; 
   const [skip, setSkip] = useState(0);
 
   const { data: fetchedProducts, isLoading, isFetching } = useQuery({
