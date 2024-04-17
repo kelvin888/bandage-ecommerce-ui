@@ -4,6 +4,7 @@ import { Box, Button, CircularProgress, Container, Grid, Stack, Typography } fro
 import ProductCard from '@/components/product-card/ProductCard';
 import { useRouter } from 'next/navigation';
 import useProduct from '@/hooks/useProduct';
+import ProductSkeleton from '@/components/product-card/ProductSkeleton';
 
 const FeaturedProducts = () => {
     const router = useRouter()
@@ -15,6 +16,8 @@ const FeaturedProducts = () => {
         router.push("/product/" + productId)
     }
 
+    let loda = true
+
     return (
         <Box py={8}>
             <Container>
@@ -24,16 +27,21 @@ const FeaturedProducts = () => {
                     <Typography fontSize={14} color="grey.700" letterSpacing={2}>Problems trying to resolve the conflict between </Typography>
                 </Stack>
 
+                {isLoading &&
+                    <Grid container spacing={4} columns={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 15 }}>
+                        {Array(10).fill(0).map((_item, index) =>
+                            <Grid key={index} item xl={3} lg={3} md={4} sm={6} xs={12}>
+                                <ProductSkeleton />
+                            </Grid>
+                        )}
+                    </Grid>
+                }
+
                 <Grid container spacing={4} columns={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 15 }}>
                     {products.map((product, index) =>
                         <Grid key={`product ${index}`} item xl={3} lg={3} md={4} sm={6} xs={12}>
                             <ProductCard
-                                productId={product.id}
-                                actualPrice={product.price}
-                                description={product.description}
-                                discountedPrice={product.discountPercentage}
-                                imageUrl={product.thumbnail}
-                                productName={product.title}
+                                product={product}
                                 onCardClick={handleCardClick}
                             />
                         </Grid>
