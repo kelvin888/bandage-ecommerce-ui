@@ -1,3 +1,4 @@
+"use "
 import Footer from '@/components/footer/Footer'
 import Header from '@/components/header/Header'
 import React from 'react'
@@ -8,6 +9,8 @@ import { Box } from '@mui/material'
 import BestSellers from './best-sellers/BestSellers'
 
 const ProuctDetails = () => {
+
+
     return (
         <Box>
             <Header />

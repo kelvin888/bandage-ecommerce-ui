@@ -1,6 +1,5 @@
 "use client"
-import useBreakpoints from '@/hooks/useBreakPoints';
-import { Box, Breakpoint, Container, ImageList, ImageListItem, Typography } from '@mui/material'
+import { Box, Container, ImageList, ImageListItem, Typography } from '@mui/material'
 import Image from 'next/image';
 import React from 'react'
 import Image1 from "@/assets/images/hero/image1.png"
@@ -9,18 +8,17 @@ import Image3 from "@/assets/images/hero/image3.png"
 import Image4 from "@/assets/images/hero/image4.png"
 
 const Hero = () => {
-    const isLargeScreen = useBreakpoints('md' as Breakpoint);
 
     return (
         <Box>
             <Container>
                 <ImageList
                     variant="quilted"
-                    cols={isLargeScreen ? 24 : 12}
+                    cols={24}
                     gap={16}
                     rowHeight={300}
                 >
-                    <ImageListItem cols={isLargeScreen ? 10 : 12} rows={isLargeScreen ? 2 : 1}>
+                    <ImageListItem cols={10} rows={2}>
                         <Image
                             fill src={Image1}
                             style={{ objectFit: "cover" }}
@@ -31,7 +29,7 @@ const Hero = () => {
                             <Typography fontWeight={700} fontSize={14}>Read More</Typography>
                         </Box>
                     </ImageListItem>
-                    <ImageListItem cols={isLargeScreen ? 14 : 12} rows={1}>
+                    <ImageListItem cols={14} rows={1}>
                         <Image fill
                             style={{ objectFit: "cover" }}
                             src={Image2} alt="Coffee" />
@@ -41,7 +39,7 @@ const Hero = () => {
                             <Typography fontWeight={700} fontSize={14}>Read More</Typography>
                         </Box>
                     </ImageListItem>
-                    <ImageListItem cols={isLargeScreen ? 7 : 12} rows={1}>
+                    <ImageListItem cols={7} rows={1}>
                         <Image fill
                             style={{ objectFit: "cover" }}
                             src={Image3} alt='Burger' />
@@ -51,7 +49,7 @@ const Hero = () => {
                             <Typography fontWeight={700} fontSize={14}>Read More</Typography>
                         </Box>
                     </ImageListItem>
-                    <ImageListItem cols={isLargeScreen ? 7 : 12} rows={1}>
+                    <ImageListItem cols={7} rows={1}>
                         <Image fill
                             style={{ objectFit: "cover" }}
                             src={Image4} alt='Camera' />
@@ -64,7 +62,7 @@ const Hero = () => {
                 </ImageList>
 
             </Container>
-        </Box>
+        </Box >
     )
 }
 

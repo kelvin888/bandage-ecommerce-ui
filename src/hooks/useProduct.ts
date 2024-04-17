@@ -2,13 +2,13 @@
 import { useState, useEffect } from 'react';
 import { productKeys } from '@/constants/queryKeys';
 import productService from '@/services/productService';
-import { Product } from '@/types/product'; 
+import { Product } from '@/types/product';
 import { useQuery } from '@tanstack/react-query';
 
 
-const useProduct = (limit: number) => {
+const useProduct = ({ limit, productId }: { limit?: number, productId?: number }) => {
   const [products, setProducts] = useState<Product[]>([]);
-  const defaultLimit = limit || 30; 
+  const defaultLimit = limit || 30;
   const [skip, setSkip] = useState(0);
 
   const { data: fetchedProducts, isLoading, isFetching } = useQuery({
@@ -27,7 +27,15 @@ const useProduct = (limit: number) => {
     setSkip((prevSkip) => prevSkip + defaultLimit);
   };
 
-  return { products, isLoading, isFetching, handleLoadMore };
+  const { data: product, isLoading: loadingSingleProduct } = useQuery({
+    queryKey: [productKeys.FIND_PRODUCT_BY_ID],
+    queryFn: async () => {
+      const response = await productService.getProductById(Number(productId));
+      return response.data;
+    }
+  })
+
+  return { products, isLoading, isFetching, handleLoadMore, product, loadingSingleProduct };
 };
 
 export default useProduct;

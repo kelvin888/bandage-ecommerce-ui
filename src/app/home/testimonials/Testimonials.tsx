@@ -12,15 +12,13 @@ import User7 from "@/assets/images/testimonial/user7.png"
 import User8 from "@/assets/images/testimonial/user8.png"
 import User9 from "@/assets/images/testimonial/user9.png"
 import User10 from "@/assets/images/testimonial/user10.png"
-import useBreakpoints from '@/hooks/useBreakPoints';
 
 const Testimonials = () => {
-    const isLargeScreen = useBreakpoints("md" as Breakpoint)
 
     return (
         <Box minHeight={682} py={12}>
             <Container sx={{ display: "flex", flexWrap: "wrap" }}>
-                <Box flex={isLargeScreen ? 1 : "100%"} display="flex" alignItems="center" justifyContent="center" flexDirection="column" py={2}>
+                <Box flex={1} display="flex" alignItems="center" justifyContent="center" flexDirection="column" py={2}>
                     <Typography fontWeight={700} fontSize={24} mb={6}>
                         What they say about us
                     </Typography>

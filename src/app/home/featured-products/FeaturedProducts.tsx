@@ -8,7 +8,7 @@ import ProductSkeleton from '@/components/product-card/ProductSkeleton';
 
 const FeaturedProducts = () => {
     const router = useRouter()
-    const { products, handleLoadMore, isFetching, isLoading } = useProduct(30)
+    const { products, handleLoadMore, isFetching, isLoading } = useProduct({ limit: 30 })
 
 
     const handleCardClick = (productId: number) => {

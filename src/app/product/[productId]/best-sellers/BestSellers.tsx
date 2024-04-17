@@ -8,7 +8,7 @@ import React from 'react'
 
 const BestSellers = () => {
     const router = useRouter()
-    const { products, isLoading } = useProduct(8)
+    const { products, isLoading } = useProduct({ limit: 8 })
 
     const handleCardClick = (productId: number) => {
         console.log("card clicked", productId)

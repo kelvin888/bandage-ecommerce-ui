@@ -1,13 +1,11 @@
 "use client"
-import { Box, Breakpoint, Container, Stack, Typography } from '@mui/material'
+import { Box, Container, Stack, Typography } from '@mui/material'
 import React from 'react'
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import CalendarViewMonthIcon from '@mui/icons-material/CalendarViewMonth';
 import { TrendingUp } from '@mui/icons-material';
-import useBreakpoints from '@/hooks/useBreakPoints';
 
 const Services = () => {
-    const isLargeScreen = useBreakpoints('md' as Breakpoint);
 
     return (
         <Box>
@@ -19,7 +17,7 @@ const Services = () => {
                         <Typography fontSize={14} color="grey.700" letterSpacing={2} fontWeight={500}>Problems trying to resolve the conflict between </Typography>
                     </Stack>
 
-                    <Stack direction="row" justifyContent={isLargeScreen ? "space-between" : "center"} gap={4} flexWrap="wrap">
+                    <Stack direction="row" justifyContent={"space-between"} gap={4} flexWrap="wrap">
                         <Box display="flex" flexDirection="column" alignItems="center" gap={2}>
                             <Box color="primary.main">
                                 <LocalLibraryIcon sx={{ fontSize: 72 }} />

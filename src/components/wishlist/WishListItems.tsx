@@ -5,7 +5,7 @@ import ProductCard from '../product-card/ProductCard'
 import WishListItem from './WishListItem'
 
 const WishListItems = () => {
-    const { products } = useProduct(6)
+    const { products } = useProduct({ limit: 6 })
     return (
         <Box marginTop={2}>
             <Grid container spacing={4}>

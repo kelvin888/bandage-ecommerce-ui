@@ -1,11 +1,9 @@
 "use client"
-import { Box, Breakpoint, Button, Stack, Typography } from '@mui/material'
+import { Box, Button, Stack, Typography } from '@mui/material'
 import React from 'react'
 import calltoActionBg from "@/assets/images/call-to-action-bg.png"
-import useBreakpoints from '@/hooks/useBreakPoints';
 
 const CallToAction = () => {
-    const isLargeScreen = useBreakpoints('md' as Breakpoint);
 
     return (
         <Box sx={{
@@ -17,7 +15,7 @@ const CallToAction = () => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            backgroundPosition: isLargeScreen ? "unset" : "bottom"
+            backgroundPosition: "unset"
         }}>
             <Stack direction="column" alignItems="center" gap={3} maxWidth={571} px={2}>
                 <Typography color="primary.main" fontSize={14} fontWeight={700}>Designing Better Experience</Typography>

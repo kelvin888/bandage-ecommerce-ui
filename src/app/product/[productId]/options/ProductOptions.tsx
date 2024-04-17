@@ -1,7 +1,7 @@
 "use client"
 import ImageGallery from '@/components/image-gallery/ImageGallery'
 import { Alert, Box, Breadcrumbs, Button, Container, Link, Snackbar, Stack, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import Rating from '@mui/material/Rating';
 import Divider from '@mui/material/Divider';
@@ -9,12 +9,11 @@ import ColorChooser from '@/components/color-chooser/ColorChooser';
 import { StyledIconButton } from '@/components/styled-icon-button/StyledIconButton';
 import { AddShoppingCartOutlined, FavoriteBorderOutlined, VisibilityOutlined } from '@mui/icons-material';
 import theme from '@/theme/theme';
-import { useQuery } from '@tanstack/react-query';
-import { productKeys } from '@/constants/queryKeys';
-import productService from '@/services/productService';
-import { useParams } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { addItem } from '@/features/cart/cartSlice';
+import { useParams } from 'next/navigation';
+import useProduct from '@/hooks/useProduct';
+import OptionsSkeleton from './OptionsSkeleton';
 
 const colors = ['#FF5733', '#23856D', '#E77C40', '#60a5fa']; // Example colors
 
@@ -33,18 +32,11 @@ const breadcrumbs = [
 ];
 
 const ProductOptions = () => {
+    const params = useParams<{ productId: string; }>()
+    const { product, isLoading } = useProduct({ productId: Number(params.productId) })
+
     const [addToCartSuccess, setAddToCartSuccess] = useState(false)
     const dispatch = useDispatch();
-
-    const params = useParams<{ productId: string; }>()
-
-    const { data: product } = useQuery({
-        queryKey: [productKeys.FIND_PRODUCT_BY_ID],
-        queryFn: async () => {
-            const response = await productService.getProductById(Number(params.productId));
-            return response.data;
-        }
-    })
 
     const handleColorClick = (color: string) => {
         console.log('Selected color:', color);
@@ -61,7 +53,12 @@ const ProductOptions = () => {
         setAddToCartSuccess(false)
     }
 
+
     console.log("resp", product)
+
+    if (isLoading) {
+        return <OptionsSkeleton />
+    }
     return (
         <Box bgcolor="grey.500">
             <Container>
