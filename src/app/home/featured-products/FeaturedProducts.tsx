@@ -5,10 +5,11 @@ import ProductCard from '@/components/product-card/ProductCard';
 import { useRouter } from 'next/navigation';
 import useProduct from '@/hooks/useProduct';
 import ProductSkeleton from '@/components/product-card/ProductSkeleton';
+import { productKeys } from '@/constants/queryKeys';
 
 const FeaturedProducts = () => {
     const router = useRouter()
-    const { products, handleLoadMore, isFetching, isLoading } = useProduct({ limit: 30 })
+    const { products, handleLoadMore, isFetching, isLoading } = useProduct({ limit: 30, queryKey: productKeys.FEATURED_PRODUCTS })
 
 
     const handleCardClick = (productId: number) => {

@@ -14,6 +14,7 @@ import { addItem } from '@/features/cart/cartSlice';
 import { useParams } from 'next/navigation';
 import useProduct from '@/hooks/useProduct';
 import OptionsSkeleton from './OptionsSkeleton';
+import { productKeys } from '@/constants/queryKeys';
 
 const colors = ['#FF5733', '#23856D', '#E77C40', '#60a5fa']; // Example colors
 
@@ -33,7 +34,7 @@ const breadcrumbs = [
 
 const ProductOptions = () => {
     const params = useParams<{ productId: string; }>()
-    const { product, isLoading } = useProduct({ productId: Number(params.productId) })
+    const { product, isLoading, isFetching } = useProduct({ productId: Number(params.productId), queryKey: productKeys.BEST_SELLERS })
 
     const [addToCartSuccess, setAddToCartSuccess] = useState(false)
     const dispatch = useDispatch();
@@ -56,7 +57,7 @@ const ProductOptions = () => {
 
     console.log("resp", product)
 
-    if (isLoading) {
+    if (isLoading || isFetching) {
         return <OptionsSkeleton />
     }
     return (

@@ -5,8 +5,11 @@ import productService from '@/services/productService';
 import { Product } from '@/types/product';
 import { useQuery } from '@tanstack/react-query';
 
+type UseProductProps = {
+  limit?: number, productId?: number, queryKey: string
+}
 
-const useProduct = ({ limit, productId }: { limit?: number, productId?: number }) => {
+const useProduct = ({ limit, productId }: UseProductProps) => {
   const [products, setProducts] = useState<Product[]>([]);
   const defaultLimit = limit || 30;
   const [skip, setSkip] = useState(0);

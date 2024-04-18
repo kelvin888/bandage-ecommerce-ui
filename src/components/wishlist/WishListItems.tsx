@@ -1,11 +1,11 @@
 import useProduct from '@/hooks/useProduct'
 import { Box, Grid } from '@mui/material'
 import React from 'react'
-import ProductCard from '../product-card/ProductCard'
 import WishListItem from './WishListItem'
+import { productKeys } from '@/constants/queryKeys'
 
 const WishListItems = () => {
-    const { products } = useProduct({ limit: 6 })
+    const { products } = useProduct({ limit: 6, queryKey: productKeys.FEATURED_PRODUCTS })
     return (
         <Box marginTop={2}>
             <Grid container spacing={4}>

@@ -1,6 +1,7 @@
 "use client"
 import ProductCard from '@/components/product-card/ProductCard';
 import ProductSkeleton from '@/components/product-card/ProductSkeleton';
+import { productKeys } from '@/constants/queryKeys';
 import useProduct from '@/hooks/useProduct';
 import { Box, Container, Divider, Grid, Typography } from '@mui/material'
 import { useRouter } from 'next/navigation';
@@ -8,7 +9,7 @@ import React from 'react'
 
 const BestSellers = () => {
     const router = useRouter()
-    const { products, isLoading } = useProduct({ limit: 8 })
+    const { products, isLoading } = useProduct({ limit: 8, queryKey: productKeys.BEST_SELLERS })
 
     const handleCardClick = (productId: number) => {
         console.log("card clicked", productId)
