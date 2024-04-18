@@ -6,7 +6,7 @@ import WishListItems from './WishListItems';
 
 const WishList = () => {
 
-    const wishListItems = useSelector(selectWishlistItems);
+    const wishListItems = [];
     const itemCount = wishListItems.length;
     const itemCountDisplay = `${itemCount} ${itemCount === 1 ? 'Item' : 'Items'}`;
 
